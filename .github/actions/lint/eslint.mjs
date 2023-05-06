@@ -15,12 +15,12 @@ export default async function eslint(
     ))
   );
   const cli = new ESLint({
-    useEslintrc: false,
-    overrideConfigFile: path.join(githubWorkspace, eslintConfigPath),
+    useEslintrc: true,
+    /* overrideConfigFile: path.join(githubWorkspace, eslintConfigPath),
     ignore: true,
     ignorePath: eslintignorePath,
     resolvePluginsRelativeTo: path.join(githubWorkspace, customDirectory, 'node_modules'),
-    extensions: ['.js', '.jsx', '.tsx']
+    extensions: ['.js', '.jsx', '.tsx'] */
   });
   const report = await cli.lintFiles(files);
 
