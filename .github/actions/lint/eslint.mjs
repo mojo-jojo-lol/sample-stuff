@@ -16,28 +16,29 @@ export default async function eslint(
   );
   const cli = new ESLint({
     useEslintrc: false,
-    overrideConfigFile: path.join(githubWorkspace, eslintConfigPath),
+    configFile: path.join(githubWorkspace, eslintConfigPath),
     ignore: true,
     ignorePath: eslintignorePath,
     resolvePluginsRelativeTo: path.join(githubWorkspace, customDirectory, 'node_modules'),
     extensions: ['.js', '.jsx', '.tsx']
   });
-  const report = cli.lintFiles(files);
-  // fixableErrorCount, fixableWarningCount are available too
-  const { results, errorCount, warningCount } = report;
+  const report = await cli.lintFiles(files);
 
   const levels = ['', 'warning', 'failure'];
 
   const annotations = [];
-  // eslint-disable-next-line no-restricted-syntax
-  for (const result of results) {
-    const { filePath, messages } = result;
+  let totalErrorCount = 0;
+  let totalWarningCount = 0;
+  for (const result of report) {
+    const { filePath, messages, errorCount, warningCount } = result;
+    totalErrorCount = totalErrorCount + errorCount;
+    totalWarningCount = totalWarningCount + warningCount;
     const path = filePath.substring(githubWorkspace.length + 1);
-    // eslint-disable-next-line no-restricted-syntax
     for (const msg of messages) {
       const {
         line, severity,
-        ruleId, message
+        ruleId, message,
+        endLine
       } = msg;
       const annotationLevel = levels[severity];
       if (!cli.isPathIgnored(filePath)) {
@@ -48,7 +49,7 @@ export default async function eslint(
         annotations.push({
           path,
           start_line: line,
-          end_line: line,
+          end_line: endLine,
           annotation_level: annotationLevel,
           message: `[${ruleId}] ${message}`
         });
@@ -56,10 +57,10 @@ export default async function eslint(
     }
   }
   return {
-    conclusion: errorCount > 0 ? 'failure' : 'success',
+    conclusion: totalErrorCount > 0 ? 'failure' : 'success',
     output: {
       title,
-      summary: `${errorCount} error(s), ${warningCount} warning(s) found`,
+      summary: `${totalErrorCount} error(s), ${totalWarningCount} warning(s) found`,
       annotations
     }
   };
