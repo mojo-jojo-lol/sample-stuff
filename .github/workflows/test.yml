@@ -44,7 +44,6 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit == 'true'
         run: |
           npm run build
-      - uses: tinovyatkin/action-eslint@v1
+      - uses: ninosaurus/eslint-check@v5
         with:
           repo-token: ${{secrets.GITHUB_TOKEN}}
-          check-name: run-linting # this is the check name from above 👆 where to post annotations
