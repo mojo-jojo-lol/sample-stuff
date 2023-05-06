@@ -44,6 +44,7 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit == 'true'
         run: |
           npm run build
+          npm i @actions/core @octokit/rest @actions/github @octokit/graphql
       - name: Lint
         uses: ./.github/actions/lint
         with:
