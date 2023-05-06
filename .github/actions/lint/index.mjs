@@ -86,9 +86,6 @@ async function run() {
       title: CONST.CHECK_NAME
     });
 
-    console.log(output);
-    core.info(output);
-
     await updateCheck({
       id,
       conclusion,
