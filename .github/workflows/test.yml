@@ -49,5 +49,6 @@ jobs:
         uses: ./.github/actions/lint
         with:
           eslint-config-path: './eslintrc.cjs'
+          eslint-ignore-path: './eslintignore'
           custom-directory: '.'
           repo-token: ${{secrets.GITHUB_TOKEN}}
