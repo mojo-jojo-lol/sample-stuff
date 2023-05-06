@@ -47,4 +47,5 @@ jobs:
       - uses: ninosaurus/eslint-check@v5
         with:
           eslint-config-path: './eslintrc.cjs'
+          custom-directory: '.'
           repo-token: ${{secrets.GITHUB_TOKEN}}
