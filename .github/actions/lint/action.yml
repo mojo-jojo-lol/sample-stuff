@@ -9,5 +9,5 @@ outputs:
   fullGreeting:
     description: 'The full greeting'
 runs:
-  using: 'node18'
+  using: 'node16'
   main: 'index.mjs'
