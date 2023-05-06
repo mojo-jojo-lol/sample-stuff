@@ -44,7 +44,8 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit == 'true'
         run: |
           npm run build
-      - uses: ninosaurus/eslint-check@v5
+      - name: Lint
+        uses: ./.github/actions/lint
         with:
           eslint-config-path: './eslintrc.cjs'
           custom-directory: '.'
