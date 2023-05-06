@@ -48,6 +48,12 @@ async function run() {
   const { context } = github;
   const { owner, repo } = context.repo;
 
+  const ghS = JSON.stringify(github, undefined, 2);
+  console.log(`The githubObject: ${ghS}`);
+  
+  const ctxS = JSON.stringify(github.context, undefined, 2);
+  console.log(`The ctxObject: ${ctxS}`);
+
   const prInfo = await getPullRequestInfo({
     graphqlWithAuth,
     prNumber: context.issue.number,
@@ -57,6 +63,8 @@ async function run() {
 
   const sha = prInfo.repository.pullRequest.commits.nodes[0].commit.oid;
   const files = prInfo.repository.pullRequest.files.nodes;
+
+  console.log(files);
 
   const filesToLint = files
     .filter((file) => CONST.EXTENSIONS_TO_LINT.includes(extname(file.path)) && isFileOk(file.path))
