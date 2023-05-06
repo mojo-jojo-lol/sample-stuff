@@ -8,7 +8,7 @@ export default async function eslint(
 ) {
   const { ESLint } = (
     await import(path.join(process.cwd(), customDirectory,
-      'node_modules/eslint')).then((
+      'node_modules/eslint/lib/api.js')).then((
       (module) => (
         module.default
       )
