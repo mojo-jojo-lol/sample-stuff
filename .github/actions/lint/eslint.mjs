@@ -16,7 +16,7 @@ export default async function eslint(
   );
   const cli = new ESLint({
     useEslintrc: false,
-    configFile: path.join(githubWorkspace, eslintConfigPath),
+    overrideConfigFile: path.join(githubWorkspace, eslintConfigPath),
     ignore: true,
     ignorePath: eslintignorePath,
     resolvePluginsRelativeTo: path.join(githubWorkspace, customDirectory, 'node_modules'),
