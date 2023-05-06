@@ -7,13 +7,13 @@ import {
   createCheck,
   updateCheck,
   getPullRequestInfo
-} from './github';
-import * as CONST from './constants';
+} from './github.mjs';
+import * as CONST from './constants.mjs';
 import {
   exitWithError,
   isFileOk
-} from './utils';
-import eslint from './eslint';
+} from './utils.mjs';
+import eslint from './eslint.mjs';
 
 const eslintConfigPath = core.getInput('eslint-config-path', { required: true });
 const eslintignorePath = core.getInput('eslintignore-path', { required: true });
