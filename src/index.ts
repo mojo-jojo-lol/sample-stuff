@@ -1,6 +1,6 @@
 const main = (value: string) => {
-  const stuff = value;
-  return stuff;
+  const passedValue = value;
+  return passedValue;
 }
 
 export {
