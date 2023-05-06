@@ -66,7 +66,6 @@ module.exports = {
     'no-throw-literal': 'error', // Disallow throwing literals as exceptions, e.g. throw 'error' instead of throw new Error('error')
     'object-curly-spacing': ['error', 'always'], // Enforce spaces inside of curly braces in objects
     'prefer-arrow-callback': 'error', // Enforce arrow functions instead of anonymous functions for callbacks
-    quotes: ['error', 'single', { allowTemplateLiterals: true }], // Enforce single quotes except for template strings
     'prettier/prettier': [
       'error',
       {

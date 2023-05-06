@@ -43,8 +43,12 @@ jobs:
         # post-install npm hook
         if: steps.cache-node-modules.outputs.cache-hit == 'true'
         run: |
-          npm run build
-      - uses: tinovyatkin/action-eslint@v1
+          # npm run build
+          npm i @actions/core @octokit/rest @actions/github @octokit/graphql
+      - name: Lint
+        uses: ./.github/actions/lint
         with:
+          eslint-config-path: './.eslintrc.cjs'
+          eslintignore-path: './.eslintignore'
+          custom-directory: '.'
           repo-token: ${{secrets.GITHUB_TOKEN}}
-          check-name: run-linting # this is the check name from above 👆 where to post annotations
