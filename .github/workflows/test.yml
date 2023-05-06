@@ -45,8 +45,6 @@ jobs:
         run: |
           npm run build
       - uses: tinovyatkin/action-eslint@v1
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           repo-token: ${{secrets.GITHUB_TOKEN}}
           check-name: run-linting # this is the check name from above 👆 where to post annotations
