@@ -1,13 +1,23 @@
 name: 'Lint'
 description: An opinionated GitHub Action starter template
 inputs:
-  whoToGreet: # id of input
-    description: 'Who to greet'
+  repo-token:
+    description: 'github security token'
     required: true
-    default: 'World'
-outputs:
-  fullGreeting:
-    description: 'The full greeting'
+  custom-directory:
+    description: 'relative directory to node_modules'
+    required: true
+  eslint-config-path:
+    description: 'relative path to eslint config file eg. .eslintrc'
+    required: true
+  eslintignore-path:
+    description: 'relative path to .eslintignore'
+    required: true
+
 runs:
   using: 'node16'
   main: 'index.mjs'
+
+branding:
+  icon: 'check-circle'
+  color: 'blue'
