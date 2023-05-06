@@ -87,7 +87,7 @@ async function run() {
     });
 
     console.log(output);
-    core.info(output);
+    core.info(GITHUB_WORKSPACE);
 
     await updateCheck({
       id,
