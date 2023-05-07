@@ -21,7 +21,7 @@ jobs:
       - name: "Debug event"
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.token }}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const ghObj = JSON.stringify(github, undefined, 2);
             console.log(`The ghObject payload: ${ghObj}`);
