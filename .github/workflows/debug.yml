@@ -1,14 +1,15 @@
 name: Debug events
 
 on:
-  #push:
+  # push:
   #  branches:
   #    - 'main'
   #  paths:
   #    - 'src/**'
   #    - 'tests/**'
-  #pull_request:
-  #  paths:
+  pull_request:
+    paths:
+      - 'lol'
   #    - 'src/**'
   #    - 'tests/**'
 
