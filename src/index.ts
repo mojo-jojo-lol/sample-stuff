@@ -1,6 +1,5 @@
-const main = (value: string) => {
-  const passedValue = value;
-  return passedValue;
+const main = (value: string): string => {
+  return value;
 }
 
 export {

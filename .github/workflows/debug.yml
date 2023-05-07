@@ -1,16 +1,17 @@
 name: Debug events
 
 on:
-  #push:
-  #  branches:
-  #    - 'main'
-  #  paths:
-  #    - 'src/**'
-  #    - 'tests/**'
-  #pull_request:
-  #  paths:
-  #    - 'src/**'
-  #    - 'tests/**'
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'src/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - 'lol'
+      - 'src/**'
+      - 'tests/**'
 
 jobs:
   debug:
@@ -23,6 +24,9 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            const c = process.env['GITHUB_EVENT_PATH'];
+            console.log(c);
+            console.log(JSON.stringify(require(c)));
             const ghObj = JSON.stringify(github, undefined, 2);
             console.log(`The ghObject payload: ${ghObj}`);
             const ctxObj = JSON.stringify(context, undefined, 2);
