@@ -1,4 +1,4 @@
-const main = (value: string) => {
+const main = (value: string): string => {
   const passedValue = value;
   return passedValue;
 }
