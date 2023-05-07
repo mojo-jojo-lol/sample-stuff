@@ -1,0 +1,30 @@
+name: Debug events
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'src/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: dev
+    steps:
+      - name: "Debug event"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.token }}
+          script: |
+            const ghObj = JSON.stringify(github, undefined, 2);
+            console.log(`The ghObject payload: ${ghObj}`);
+            const ctxObj = JSON.stringify(context, undefined, 2);
+            console.log(`The ctxObj payload: ${ctxObj}`);
+            
