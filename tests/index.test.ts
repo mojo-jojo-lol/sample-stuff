@@ -1,5 +1,9 @@
-import { describe, it, expect } from 'vitest';
+import { beforeAll, describe, it, expect } from 'vitest';
 import { main } from '../src';
+
+beforeAll(() => {
+  process.env.LOL = 'ok';
+})
 
 describe('test', () => {
   it('should be true', () => {
